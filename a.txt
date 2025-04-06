@@ -1,0 +1,764 @@
+1. Experiment: Implement different types of variables in Java (local, static, and instance variables).
+   Aim: To understand and implement the three types of variables in Java.
+   Theory: Java supports three types of variables - local, static, and instance. Local variables are declared inside methods, static variables are shared among all instances of a class, and instance variables are unique to each object.
+   Program:
+   ```java
+   class VariableExample {
+       int instanceVar = 10; // Instance variable
+       static int staticVar = 20; // Static variable
+
+       void display() {
+           int localVar = 30; // Local variable
+           System.out.println("Instance Variable: " + instanceVar);
+           System.out.println("Static Variable: " + staticVar);
+           System.out.println("Local Variable: " + localVar);
+       }
+
+       public static void main(String[] args) {
+           VariableExample obj = new VariableExample();
+           obj.display();
+       }
+   }
+   ```
+
+2. Experiment: Perform single-level and multilevel inheritance in Java.
+   Aim: To demonstrate single-level and multilevel inheritance in Java.
+   Theory: Inheritance allows a class to acquire properties and methods of another class. Single-level inheritance involves one parent and one child class, while multilevel inheritance involves a chain of inheritance.
+   Program:
+   ```java
+   class Parent {
+       void displayParent() {
+           System.out.println("This is the parent class.");
+       }
+   }
+
+   class Child extends Parent {
+       void displayChild() {
+           System.out.println("This is the child class.");
+       }
+   }
+
+   class GrandChild extends Child {
+       void displayGrandChild() {
+           System.out.println("This is the grandchild class.");
+       }
+   }
+
+   public class InheritanceExample {
+       public static void main(String[] args) {
+           GrandChild obj = new GrandChild();
+           obj.displayParent();
+           obj.displayChild();
+           obj.displayGrandChild();
+       }
+   }
+   ```
+
+3. Experiment: Perform constructor overloading in Java.
+   Aim: To understand and implement constructor overloading.
+   Theory: Constructor overloading allows a class to have multiple constructors with different parameter lists.
+   Program:
+   ```java
+   class ConstructorOverloading {
+       int x, y;
+
+       ConstructorOverloading() {
+           x = 0;
+           y = 0;
+       }
+
+       ConstructorOverloading(int a) {
+           x = a;
+           y = 0;
+       }
+
+       ConstructorOverloading(int a, int b) {
+           x = a;
+           y = b;
+       }
+
+       void display() {
+           System.out.println("x: " + x + ", y: " + y);
+       }
+
+       public static void main(String[] args) {
+           ConstructorOverloading obj1 = new ConstructorOverloading();
+           ConstructorOverloading obj2 = new ConstructorOverloading(5);
+           ConstructorOverloading obj3 = new ConstructorOverloading(5, 10);
+
+           obj1.display();
+           obj2.display();
+           obj3.display();
+       }
+   }
+   ```
+
+4. Experiment: Check if a String is a palindrome.
+   Aim: To determine whether a given string is a palindrome.
+   Theory: A palindrome is a string that reads the same backward as forward.
+   Program:
+   ```java
+   class PalindromeCheck {
+       public static void main(String[] args) {
+           String str = "madam";
+           String reversed = new StringBuilder(str).reverse().toString();
+
+           if (str.equals(reversed)) {
+               System.out.println(str + " is a palindrome.");
+           } else {
+               System.out.println(str + " is not a palindrome.");
+           }
+       }
+   }
+   ```
+
+5. Experiment: Show that String is immutable and StringBuffer is mutable.
+   Aim: To demonstrate the immutability of String and mutability of StringBuffer.
+   Theory: Strings in Java are immutable, meaning their values cannot be changed. StringBuffer allows modification of its content.
+   Program:
+   ```java
+   class StringExample {
+       public static void main(String[] args) {
+           String str = "Hello";
+           str.concat(" World");
+           System.out.println("String (Immutable): " + str);
+
+           StringBuffer sb = new StringBuffer("Hello");
+           sb.append(" World");
+           System.out.println("StringBuffer (Mutable): " + sb);
+       }
+   }
+   ```
+
+6. Experiment: Implement stack and queue concepts in Java.
+   Aim: To implement stack and queue data structures.
+   Theory: A stack follows the LIFO principle, while a queue follows the FIFO principle.
+   Program:
+   ```java
+   import java.util.Stack;
+   import java.util.LinkedList;
+   import java.util.Queue;
+
+   class StackQueueExample {
+       public static void main(String[] args) {
+           // Stack example
+           Stack<Integer> stack = new Stack<>();
+           stack.push(1);
+           stack.push(2);
+           stack.push(3);
+           System.out.println("Stack: " + stack);
+           System.out.println("Popped from stack: " + stack.pop());
+
+           // Queue example
+           Queue<Integer> queue = new LinkedList<>();
+           queue.add(1);
+           queue.add(2);
+           queue.add(3);
+           System.out.println("Queue: " + queue);
+           System.out.println("Removed from queue: " + queue.poll());
+       }
+   }
+   ```
+
+7. Experiment: Produce tokens from a given long string.
+   Aim: To tokenize a string using Java.
+   Theory: Tokenization involves breaking a string into smaller parts called tokens.
+   Program:
+   ```java
+   import java.util.StringTokenizer;
+
+   class TokenizerExample {
+       public static void main(String[] args) {
+           String str = "Java is a versatile programming language.";
+           StringTokenizer tokenizer = new StringTokenizer(str);
+
+           while (tokenizer.hasMoreTokens()) {
+               System.out.println(tokenizer.nextToken());
+           }
+       }
+   }
+   ```
+
+8. Experiment: Create a Java package to show dynamic polymorphism and interfaces.
+   Aim: To demonstrate dynamic polymorphism and interfaces in Java.
+   Theory: Dynamic polymorphism allows method overriding at runtime. Interfaces define a contract that classes must implement.
+   Program:
+   ```java
+   package polymorphism;
+
+   interface Animal {
+       void sound();
+   }
+
+   class Dog implements Animal {
+       public void sound() {
+           System.out.println("Dog barks");
+       }
+   }
+
+   class Cat implements Animal {
+       public void sound() {
+           System.out.println("Cat meows");
+       }
+   }
+
+   public class PolymorphismExample {
+       public static void main(String[] args) {
+           Animal animal = new Dog();
+           animal.sound();
+
+           animal = new Cat();
+           animal.sound();
+       }
+   }
+   ```
+
+9. Experiment: Create a multithreaded producer-consumer application.
+   Aim: To implement the producer-consumer problem using multithreading.
+   Theory: The producer-consumer problem involves synchronization between threads to share resources.
+   Program:
+   ```java
+   import java.util.LinkedList;
+
+   class ProducerConsumer {
+       LinkedList<Integer> list = new LinkedList<>();
+       int capacity = 2;
+
+       public void produce() throws InterruptedException {
+           int value = 0;
+           while (true) {
+               synchronized (this) {
+                   while (list.size() == capacity) {
+                       wait();
+                   }
+                   System.out.println("Produced: " + value);
+                   list.add(value++);
+                   notify();
+                   Thread.sleep(1000);
+               }
+           }
+       }
+
+       public void consume() throws InterruptedException {
+           while (true) {
+               synchronized (this) {
+                   while (list.isEmpty()) {
+                       wait();
+                   }
+                   int value = list.removeFirst();
+                   System.out.println("Consumed: " + value);
+                   notify();
+                   Thread.sleep(1000);
+               }
+           }
+       }
+
+       public static void main(String[] args) throws InterruptedException {
+           ProducerConsumer pc = new ProducerConsumer();
+
+           Thread producer = new Thread(() -> {
+               try {
+                   pc.produce();
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+           });
+
+           Thread consumer = new Thread(() -> {
+               try {
+                   pc.consume();
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+           });
+
+           producer.start();
+           consumer.start();
+
+           producer.join();
+           consumer.join();
+       }
+   }
+   ```
+
+10. Experiment: Create a customized exception and use all 5 exception keywords.
+    Aim: To create and handle a custom exception in Java.
+    Theory: Java provides five keywords for exception handling - try, catch, finally, throw, and throws.
+    Program:
+    ```java
+    class CustomException extends Exception {
+        public CustomException(String message) {
+            super(message);
+        }
+    }
+
+    public class ExceptionExample {
+        public static void main(String[] args) {
+            try {
+                throwException();
+            } catch (CustomException e) {
+                System.out.println("Caught exception: " + e.getMessage());
+            } finally {
+                System.out.println("Finally block executed.");
+            }
+        }
+
+        static void throwException() throws CustomException {
+            throw new CustomException("This is a custom exception.");
+        }
+    }
+    ```
+
+11. Experiment: Convert the content of a file to uppercase.
+    Aim: To read a file, convert its content to uppercase, and write it back.
+    Theory: File handling in Java allows reading and writing files.
+    Program:
+    ```java
+    import java.io.*;
+
+    class FileToUpperCase {
+        public static void main(String[] args) throws IOException {
+            File inputFile = new File("input.txt");
+            File outputFile = new File("output.txt");
+
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line.toUpperCase());
+                writer.newLine();
+            }
+
+            reader.close();
+            writer.close();
+            System.out.println("File content converted to uppercase and written to output.txt");
+        }
+    }
+    ```
+
+12. Experiment: Sort the content of a text file.
+    Aim: To sort the lines or words in a text file.
+    Theory: Sorting can be achieved using Java's collection framework or custom logic.
+    Program:
+    ```java
+    import java.io.*;
+    import java.util.*;
+
+    class SortFileContent {
+        public static void main(String[] args) throws IOException {
+            File inputFile = new File("input.txt");
+            File outputFile = new File("sorted_output.txt");
+
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            List<String> lines = new ArrayList<>();
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+            reader.close();
+
+            Collections.sort(lines);
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+            for (String sortedLine : lines) {
+                writer.write(sortedLine);
+                writer.newLine();
+            }
+            writer.close();
+            System.out.println("File content sorted and written to sorted_output.txt");
+        }
+    }
+    ```
+
+13. Experiment: Develop an analog clock using an applet.
+    Aim: To create an analog clock using Java applets.
+    Theory: Applets are Java programs that run in a web browser or applet viewer.
+    Program:
+    ```java
+    import java.applet.*;
+    import java.awt.*;
+    import java.util.Calendar;
+
+    public class AnalogClock extends Applet implements Runnable {
+        Thread t;
+        int width = 300, height = 300;
+
+        public void init() {
+            t = new Thread(this);
+            t.start();
+        }
+
+        public void run() {
+            while (true) {
+                repaint();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        public void paint(Graphics g) {
+            Calendar cal = Calendar.getInstance();
+            int hours = cal.get(Calendar.HOUR);
+            int minutes = cal.get(Calendar.MINUTE);
+            int seconds = cal.get(Calendar.SECOND);
+
+            g.setColor(Color.BLACK);
+            g.drawOval(50, 50, width, height);
+
+            // Draw clock hands
+            g.drawLine(200, 200, 200 + (int) (50 * Math.sin(seconds * Math.PI / 30)),
+                    200 - (int) (50 * Math.cos(seconds * Math.PI / 30)));
+        }
+    }
+    ```
+
+14. Experiment: Develop a scientific calculator using Swing.
+    Aim: To create a GUI-based scientific calculator.
+    Theory: Swing provides components for building graphical user interfaces in Java.
+    Program:
+    ```java
+    import javax.swing.*;
+    import java.awt.*;
+    import java.awt.event.*;
+
+    public class ScientificCalculator extends JFrame implements ActionListener {
+        JTextField display;
+        JButton[] buttons;
+        String[] buttonLabels = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"};
+
+        public ScientificCalculator() {
+            display = new JTextField();
+            display.setEditable(false);
+            add(display, BorderLayout.NORTH);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new GridLayout(4, 4));
+            buttons = new JButton[buttonLabels.length];
+
+            for (int i = 0; i < buttonLabels.length; i++) {
+                buttons[i] = new JButton(buttonLabels[i]);
+                buttons[i].addActionListener(this);
+                panel.add(buttons[i]);
+            }
+
+            add(panel, BorderLayout.CENTER);
+            setSize(300, 400);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setVisible(true);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            // Handle button clicks (basic implementation)
+            String command = e.getActionCommand();
+            display.setText(display.getText() + command);
+        }
+
+        public static void main(String[] args) {
+            new ScientificCalculator();
+        }
+    }
+    ```
+
+15. Experiment: Create an editor like MS Word using Swing.
+    Aim: To develop a text editor with basic functionalities.
+    Theory: Swing components like JTextArea and JMenuBar can be used to create a text editor.
+    Program:
+    ```java
+    import javax.swing.*;
+    import java.awt.event.*;
+    import java.io.*;
+
+    public class TextEditor extends JFrame implements ActionListener {
+        JTextArea textArea;
+        JMenuBar menuBar;
+        JMenu fileMenu;
+        JMenuItem openItem, saveItem;
+
+        public TextEditor() {
+            textArea = new JTextArea();
+            add(new JScrollPane(textArea));
+
+            menuBar = new JMenuBar();
+            fileMenu = new JMenu("File");
+            openItem = new JMenuItem("Open");
+            saveItem = new JMenuItem("Save");
+
+            openItem.addActionListener(this);
+            saveItem.addActionListener(this);
+
+            fileMenu.add(openItem);
+            fileMenu.add(saveItem);
+            menuBar.add(fileMenu);
+            setJMenuBar(menuBar);
+
+            setSize(500, 500);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setVisible(true);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == openItem) {
+                JFileChooser fileChooser = new JFileChooser();
+                if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                    try (BufferedReader reader = new BufferedReader(new FileReader(fileChooser.getSelectedFile()))) {
+                        textArea.read(reader, null);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            } else if (e.getSource() == saveItem) {
+                JFileChooser fileChooser = new JFileChooser();
+                if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile()))) {
+                        textArea.write(writer);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        public static void main(String[] args) {
+            new TextEditor();
+        }
+    }
+    ```
+
+16. Experiment: Create a servlet that uses cookies to track user visits.
+    Aim: To use cookies in a servlet to count user visits.
+    Theory: Cookies are small pieces of data stored on the client-side to maintain session information.
+    Program:
+    ```java
+    import java.io.*;
+    import javax.servlet.*;
+    import javax.servlet.http.*;
+
+    public class VisitCounterServlet extends HttpServlet {
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+
+            Cookie[] cookies = request.getCookies();
+            int visitCount = 0;
+
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("visitCount")) {
+                        visitCount = Integer.parseInt(cookie.getValue());
+                    }
+                }
+            }
+
+            visitCount++;
+            Cookie visitCookie = new Cookie("visitCount", Integer.toString(visitCount));
+            response.addCookie(visitCookie);
+
+            out.println("<h1>Welcome! You have visited this page " + visitCount + " times.</h1>");
+        }
+    }
+    ```
+
+17. Experiment: Create a simple JavaBean with bound and constrained properties.
+    Aim: To implement a JavaBean with bound and constrained properties.
+    Theory: JavaBeans are reusable software components that follow specific conventions.
+    Program:
+    ```java
+    import java.beans.*;
+    import java.io.Serializable;
+
+    public class SimpleBean implements Serializable {
+        private String property;
+        private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+
+        public String getProperty() {
+            return property;
+        }
+
+        public void setProperty(String property) {
+            String oldProperty = this.property;
+            this.property = property;
+            pcs.firePropertyChange("property", oldProperty, property);
+        }
+
+        public void addPropertyChangeListener(PropertyChangeListener listener) {
+            pcs.addPropertyChangeListener(listener);
+        }
+
+        public void removePropertyChangeListener(PropertyChangeListener listener) {
+            pcs.removePropertyChangeListener(listener);
+        }
+    }
+    ```
+
+18. Experiment: Perform CRUD operations on an Employee database using JDBC.
+    Aim: To perform insertion, deletion, updation, and retrieval of records using JDBC.
+    Theory: JDBC provides an API for connecting and executing queries on a database.
+    Program:
+    ```java
+    import java.sql.*;
+
+    public class EmployeeCRUD {
+        public static void main(String[] args) {
+            String url = "jdbc:mysql://localhost:3306/your_database";
+            String user = "root";
+            String password = "password";
+
+            try (Connection conn = DriverManager.getConnection(url, user, password)) {
+                Statement stmt = conn.createStatement();
+
+                // Create
+                stmt.executeUpdate("INSERT INTO Employee (id, name, salary) VALUES (1, 'John', 50000)");
+
+                // Read
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Employee");
+                while (rs.next()) {
+                    System.out.println("ID: " + rs.getInt("id") + ", Name: " + rs.getString("name") + ", Salary: " + rs.getDouble("salary"));
+                }
+
+                // Update
+                stmt.executeUpdate("UPDATE Employee SET salary = 55000 WHERE id = 1");
+
+                // Delete
+                stmt.executeUpdate("DELETE FROM Employee WHERE id = 1");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    ```
+
+19. Experiment: Perform event handling in Java using AWT.
+    Aim: To create a GUI that performs arithmetic operations using AWT.
+    Theory: AWT provides components for building GUI applications and handling events.
+    Program:
+    ```java
+    import java.awt.*;
+    import java.awt.event.*;
+
+    public class ArithmeticOperations extends Frame implements ActionListener {
+        TextField num1, num2, result;
+        Button add, subtract, multiply, divide;
+
+        public ArithmeticOperations() {
+            setLayout(new FlowLayout());
+
+            num1 = new TextField(10);
+            num2 = new TextField(10);
+            result = new TextField(10);
+            result.setEditable(false);
+
+            add = new Button("+");
+            subtract = new Button("-");
+            multiply = new Button("*");
+            divide = new Button("/");
+
+            add(num1);
+            add(num2);
+            add(add);
+            add(subtract);
+            add(multiply);
+            add(divide);
+            add(result);
+
+            add.addActionListener(this);
+            subtract.addActionListener(this);
+            multiply.addActionListener(this);
+            divide.addActionListener(this);
+
+            setSize(300, 200);
+            setVisible(true);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            try {
+                int n1 = Integer.parseInt(num1.getText());
+                int n2 = Integer.parseInt(num2.getText());
+                int res = 0;
+
+                if (e.getSource() == add) res = n1 + n2;
+                else if (e.getSource() == subtract) res = n1 - n2;
+                else if (e.getSource() == multiply) res = n1 * n2;
+                else if (e.getSource() == divide) res = n1 / n2;
+
+                result.setText(String.valueOf(res));
+            } catch (Exception ex) {
+                result.setText("Error");
+            }
+        }
+
+        public static void main(String[] args) {
+            new ArithmeticOperations();
+        }
+    }
+    ```
+
+20. Experiment: Multithreading without and with synchronization.
+    (a) Aim: To print the table of 2 numbers without synchronization.
+        Theory: Multithreading allows concurrent execution of threads without synchronization.
+        Program:
+        ```java
+        class TableWithoutSync extends Thread {
+            int number;
+
+            TableWithoutSync(int number) {
+                this.number = number;
+            }
+
+            public void run() {
+                for (int i = 1; i <= 10; i++) {
+                    System.out.println(number + " x " + i + " = " + (number * i));
+                }
+            }
+
+            public static void main(String[] args) {
+                TableWithoutSync t1 = new TableWithoutSync(2);
+                TableWithoutSync t2 = new TableWithoutSync(3);
+
+                t1.start();
+                t2.start();
+            }
+        }
+        ```
+
+    (b) Aim: To print the table of 2 numbers with synchronization.
+        Theory: Synchronization ensures thread-safe operations in multithreading.
+        Program:
+        ```java
+        class TableWithSync {
+            synchronized void printTable(int number) {
+                for (int i = 1; i <= 10; i++) {
+                    System.out.println(number + " x " + i + " = " + (number * i));
+                }
+            }
+        }
+
+        class ThreadWithSync extends Thread {
+            TableWithSync table;
+            int number;
+
+            ThreadWithSync(TableWithSync table, int number) {
+                this.table = table;
+                this.number = number;
+            }
+
+            public void run() {
+                table.printTable(number);
+            }
+
+            public static void main(String[] args) {
+                TableWithSync table = new TableWithSync();
+
+                ThreadWithSync t1 = new ThreadWithSync(table, 2);
+                ThreadWithSync t2 = new ThreadWithSync(table, 3);
+
+                t1.start();
+                t2.start();
+            }
+        }
+        ```
